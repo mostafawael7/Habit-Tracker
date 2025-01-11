@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1C95960B2D328AFA00AA401E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1C95960A2D328AFA00AA401E /* FirebaseAnalytics */; };
+		1C95960D2D328AFA00AA401E /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1C95960C2D328AFA00AA401E /* FirebaseCore */; };
+		1C95960F2D328AFA00AA401E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1C95960E2D328AFA00AA401E /* FirebaseCrashlytics */; };
+		1C9596112D328AFA00AA401E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1C9596102D328AFA00AA401E /* FirebaseFirestore */; };
+		1C9596132D328AFA00AA401E /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 1C9596122D328AFA00AA401E /* FirebasePerformance */; };
+		1C9596152D328AFA00AA401E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1C9596142D328AFA00AA401E /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1C9595F02D3283B100AA401E /* Habit Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C95960F2D328AFA00AA401E /* FirebaseCrashlytics in Frameworks */,
+				1C9596112D328AFA00AA401E /* FirebaseFirestore in Frameworks */,
+				1C9596132D328AFA00AA401E /* FirebasePerformance in Frameworks */,
+				1C95960D2D328AFA00AA401E /* FirebaseCore in Frameworks */,
+				1C95960B2D328AFA00AA401E /* FirebaseAnalytics in Frameworks */,
+				1C9596152D328AFA00AA401E /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,12 @@
 			);
 			name = "Habit Tracking";
 			packageProductDependencies = (
+				1C95960A2D328AFA00AA401E /* FirebaseAnalytics */,
+				1C95960C2D328AFA00AA401E /* FirebaseCore */,
+				1C95960E2D328AFA00AA401E /* FirebaseCrashlytics */,
+				1C9596102D328AFA00AA401E /* FirebaseFirestore */,
+				1C9596122D328AFA00AA401E /* FirebasePerformance */,
+				1C9596142D328AFA00AA401E /* FirebaseStorage */,
 			);
 			productName = "Habit Tracking";
 			productReference = 1C9595F02D3283B100AA401E /* Habit Tracking.app */;
@@ -107,6 +128,9 @@
 			);
 			mainGroup = 1C9595E72D3283B000AA401E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1C9595F12D3283B100AA401E /* Products */;
 			projectDirPath = "";
@@ -345,6 +369,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C95960A2D328AFA00AA401E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		1C95960C2D328AFA00AA401E /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		1C95960E2D328AFA00AA401E /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		1C9596102D328AFA00AA401E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		1C9596122D328AFA00AA401E /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		1C9596142D328AFA00AA401E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C9596092D328AFA00AA401E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C9595E82D3283B000AA401E /* Project object */;
 }
