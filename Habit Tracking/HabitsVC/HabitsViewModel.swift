@@ -33,6 +33,17 @@ class HabitsViewModel {
         }
     }
     
+    func add(habit: String, onSuccess: @escaping () -> Void, onFailure: @escaping (String) -> Void){
+        fb.addHabit(name: habit) { result in
+            switch result {
+            case .success:
+                onSuccess()
+            case .failure:
+                onFailure("Failed to add your new habit!")
+            }
+        }
+    }
+    
     func getHabitsCount() -> Int {
         return habits?.count ?? 0
     }

@@ -22,4 +22,8 @@ extension HabitsVC: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(habit: habit)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let habit = viewModel.getHabit(at: indexPath.row)
+    }
 }

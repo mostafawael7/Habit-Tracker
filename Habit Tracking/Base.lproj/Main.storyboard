@@ -12,7 +12,7 @@
         <!--Habit Tracker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HabitsVC" customModule="Habit_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HabitsVC" id="BYZ-38-t0r" customClass="HabitsVC" customModule="Habit_Tracking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Habit Tracker" id="VfA-Pw-poh">
                         <barButtonItem key="backBarButtonItem" title="back" id="grV-o5-9u0"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="fUt-Fj-k7X"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="fUt-Fj-k7X">
+                            <connections>
+                                <action selector="addBtnClicked:" destination="BYZ-38-t0r" id="lfB-1O-9iw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="noDataImg" destination="D1G-2Z-oku" id="fA9-5J-3cy"/>
@@ -52,6 +56,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="902" y="-27"/>
+        </scene>
+        <!--Add HabitVC-->
+        <scene sceneID="dde-C6-0GE">
+            <objects>
+                <viewController storyboardIdentifier="AddHabitVC" id="rpG-5f-y6X" customClass="AddHabitVC" customModule="Habit_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="MZh-YO-fA8">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypO-Ac-b5c">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9UV-cD-H5q">
+                                <rect key="frame" x="24" y="326" width="345" height="200"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="88I-GC-dHD">
+                                        <rect key="frame" x="8" y="12" width="329" height="176"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uOZ-ug-QAt" customClass="PlaceholderTextView" customModule="Habit_Tracking" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="329" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="MFO-RL-WCB"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8A-Fi-J73">
+                                                <rect key="frame" x="0.0" y="136" width="329" height="40"/>
+                                                <color key="backgroundColor" red="0.41195610249999998" green="0.60591278059999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="tD5-tF-1Ek"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="add">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addBtnClicked:" destination="rpG-5f-y6X" eventType="touchUpInside" id="JzM-LJ-gyg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="4SW-xV-DVP"/>
+                                    <constraint firstItem="88I-GC-dHD" firstAttribute="leading" secondItem="9UV-cD-H5q" secondAttribute="leading" constant="8" id="ilS-UZ-oCm"/>
+                                    <constraint firstItem="88I-GC-dHD" firstAttribute="centerY" secondItem="9UV-cD-H5q" secondAttribute="centerY" id="p7X-g4-nbB"/>
+                                    <constraint firstAttribute="trailing" secondItem="88I-GC-dHD" secondAttribute="trailing" constant="8" id="yky-er-5Xz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sIT-eM-2kt"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29644177170000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ypO-Ac-b5c" firstAttribute="top" secondItem="MZh-YO-fA8" secondAttribute="top" id="84w-FE-yeR"/>
+                            <constraint firstItem="sIT-eM-2kt" firstAttribute="trailing" secondItem="9UV-cD-H5q" secondAttribute="trailing" constant="24" id="9E6-8f-huH"/>
+                            <constraint firstItem="9UV-cD-H5q" firstAttribute="centerX" secondItem="ypO-Ac-b5c" secondAttribute="centerX" id="COZ-uS-Yiy"/>
+                            <constraint firstAttribute="bottom" secondItem="ypO-Ac-b5c" secondAttribute="bottom" id="JTy-g6-all"/>
+                            <constraint firstItem="9UV-cD-H5q" firstAttribute="centerY" secondItem="ypO-Ac-b5c" secondAttribute="centerY" id="clr-Lg-s92"/>
+                            <constraint firstItem="ypO-Ac-b5c" firstAttribute="leading" secondItem="sIT-eM-2kt" secondAttribute="leading" id="sIT-fx-jnZ"/>
+                            <constraint firstItem="sIT-eM-2kt" firstAttribute="trailing" secondItem="ypO-Ac-b5c" secondAttribute="trailing" id="vea-Wb-Jzi"/>
+                            <constraint firstItem="9UV-cD-H5q" firstAttribute="leading" secondItem="sIT-eM-2kt" secondAttribute="leading" constant="24" id="xci-iq-gyA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="taskTextView" destination="uOZ-ug-QAt" id="Bhc-cO-iNx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="deq-0e-7W4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1680" y="-27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xX8-OT-VWz">
@@ -74,6 +163,9 @@
     </scenes>
     <resources>
         <image name="nosign" catalog="system" width="128" height="123"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
