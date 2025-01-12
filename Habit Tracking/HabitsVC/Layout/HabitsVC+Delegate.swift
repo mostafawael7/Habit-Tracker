@@ -25,5 +25,23 @@ extension HabitsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let habit = viewModel.getHabit(at: indexPath.row)
+        if !habit.isCompleted {
+            viewModel.update(habitID: habit.id, onSuccess: {
+                self.displayAlert(title: "Success!", message: "You completed \(habit.name) for today!")
+            }, onFailure: { error in
+                self.displayAlert(title: "Error", message: error)
+            })
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let habit = viewModel.getHabit(at: indexPath.row)
+        if editingStyle == .delete {
+            viewModel.delete(habitID: habit.id, onSuccess: {
+                self.displayAlert(title: "Success!", message: "\(habit.name) is deleted from your habit list!")
+            }, onFailure: { error in
+                self.displayAlert(title: "Error", message: error)
+            })
+        }
     }
 }

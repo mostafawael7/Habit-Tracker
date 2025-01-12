@@ -21,15 +21,23 @@ class HabitsViewModel {
         }
     }
     
-    func list() {
-        fb.fetchHabits {[weak self] habits, error in
-            guard let self else {return}
-            if let habits{
-                self.habits = habits
-                print("habits: \(habits)")
-            }else {
-                print(error?.localizedDescription ?? "")
-            }
+//    func list() {
+//        fb.fetchHabits {[weak self] habits, error in
+//            guard let self else {return}
+//            if let habits{
+//                self.habits = habits
+//                print("habits: \(habits)")
+//            }else {
+//                print(error?.localizedDescription ?? "")
+//            }
+//        }
+//    }
+    
+    // Real-time updates
+    func listenForUpdates() {
+        fb.listenForHabitsUpdates { [weak self] updatedHabits in
+            guard let self = self else { return }
+            self.habits = updatedHabits // Update the local habits array
         }
     }
     
@@ -40,6 +48,28 @@ class HabitsViewModel {
                 onSuccess()
             case .failure:
                 onFailure("Failed to add your new habit!")
+            }
+        }
+    }
+    
+    func update(habitID: String, onSuccess: @escaping () -> Void, onFailure: @escaping (String) -> Void){
+        fb.updateHabit(habitID: habitID) { result in
+            switch result {
+            case .success:
+                onSuccess()
+            case .failure:
+                onFailure("Failed to complete your habit!")
+            }
+        }
+    }
+    
+    func delete(habitID: String, onSuccess: @escaping () -> Void, onFailure: @escaping (String) -> Void){
+        fb.deleteHabit(habitID: habitID) { result in
+            switch result {
+            case .success:
+                onSuccess()
+            case .failure:
+                onFailure("Failed to delete your habit!")
             }
         }
     }

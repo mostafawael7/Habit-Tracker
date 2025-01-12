@@ -18,11 +18,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6ux-Uz-n57">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="111" width="393" height="707"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nosign" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-2Z-oku">
-                                <rect key="frame" x="16.666666666666657" y="246.66666666666666" width="360" height="358.66666666666674"/>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nosign.app.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-2Z-oku">
+                                <rect key="frame" x="16.666666666666657" y="247.66666666666663" width="360" height="357"/>
+                                <color key="tintColor" red="0.41195610249999998" green="0.60591278059999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="360" id="6z1-sg-ipM"/>
                                     <constraint firstAttribute="height" constant="360" id="VQC-lM-Gw4"/>
@@ -34,7 +35,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6ux-Uz-n57" secondAttribute="trailing" id="BfE-xw-Uuw"/>
                             <constraint firstItem="6ux-Uz-n57" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dsi-eG-9dD"/>
-                            <constraint firstItem="6ux-Uz-n57" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="F9O-XC-Rka"/>
+                            <constraint firstItem="6ux-Uz-n57" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="F9O-XC-Rka"/>
                             <constraint firstItem="D1G-2Z-oku" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hWa-BQ-aSC"/>
                             <constraint firstItem="D1G-2Z-oku" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tuT-7J-DgG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6ux-Uz-n57" secondAttribute="bottom" id="zBm-mY-lBO"/>
@@ -162,7 +163,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="nosign" catalog="system" width="128" height="123"/>
+        <image name="nosign.app.fill" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

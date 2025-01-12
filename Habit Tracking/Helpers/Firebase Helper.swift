@@ -13,23 +13,19 @@ class FirebaseHelper {
     private let collectionName = "Habits"
     let db = Firestore.firestore()
     
-    func fetchHabits(completion: @escaping ([HabitModel]?, Error?) -> Void) {
-        db.collection(collectionName).getDocuments { snapshot, error in
-            if let error = error {
-                completion(nil, error)
+    func listenForHabitsUpdates(completion: @escaping ([HabitModel]) -> Void) {
+        db.collection(collectionName).addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot else {
+                print("Error listening for habit updates: \(String(describing: error?.localizedDescription))")
                 return
             }
-            
-            guard let documents = snapshot?.documents else {
-                completion(nil, nil)
-                return
+
+            let updatedHabits = snapshot.documents.compactMap { document -> HabitModel? in
+                let data = document.data()
+                return HabitModel(id: document.documentID, document: data)
             }
-            
-            let files = documents.compactMap { document -> HabitModel? in
-                return HabitModel(document: document.data())
-            }
-            
-            completion(files, nil)
+
+            completion(updatedHabits)
         }
     }
     
@@ -41,6 +37,30 @@ class FirebaseHelper {
         ] as [String: Any]
         
         db.collection(collectionName).addDocument(data: habitDict) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+    
+    func updateHabit(habitID: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let habitDict: [String: Any] = [
+            "status": true
+        ]
+
+        db.collection(collectionName).document(habitID).updateData(habitDict) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+    
+    func deleteHabit(habitID: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        db.collection(collectionName).document(habitID).delete { error in
             if let error = error {
                 completion(.failure(error))
             } else {

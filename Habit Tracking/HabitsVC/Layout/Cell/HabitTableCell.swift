@@ -23,6 +23,6 @@ class HabitTableCell: UITableViewCell {
     
     func configureCell(habit: HabitModel) {
         nameLbl.text = habit.name
-        statusImg.image = habit.status ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
+        statusImg.image = habit.isCompleted ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
     }
 }

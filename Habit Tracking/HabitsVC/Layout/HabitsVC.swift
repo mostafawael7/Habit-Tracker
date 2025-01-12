@@ -29,16 +29,13 @@ class HabitsVC: UIViewController {
         super.viewWillAppear(animated)
         
         displayAnimatedActivityIndicatorView()
-        viewModel.list()
+//        viewModel.list()
+        viewModel.listenForUpdates()
+
     }
     
     @IBAction func addBtnClicked(_ sender: UIBarButtonItem) {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "AddHabitVC") as? AddHabitVC {
-            vc.onHabitAdded = { [weak self] in
-                guard let self = self else { return }
-                displayAnimatedActivityIndicatorView()
-                self.viewModel.list()
-            }
             vc.modalPresentationStyle = .overCurrentContext
             present(vc, animated: false)
         }

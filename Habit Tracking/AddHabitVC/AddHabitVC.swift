@@ -12,12 +12,12 @@ class AddHabitVC: UIViewController {
 
     @IBOutlet weak var taskTextView: PlaceholderTextView!
     
-    var onHabitAdded: (() -> Void)? // Closure to notify habit addition
+    var onHabitAdded: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        taskTextView.placeholder = "New Task"
+        taskTextView.placeholder = "New Habit"
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleViewDismiss))
         view.addGestureRecognizer(tapGesture)
@@ -33,11 +33,10 @@ class AddHabitVC: UIViewController {
         }
         viewModel.add(habit: taskTextView.text, onSuccess: {
             self.displayAlert(title: "Success!", message: "You have a new habit added!!", handler: {
-                self.onHabitAdded?()
                 self.dismiss(animated: false)
             })
         }, onFailure: { error in
-            print(error)
+            self.displayAlert(title: "Error", message: error)
         })
     }
 }

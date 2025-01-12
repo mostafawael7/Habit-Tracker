@@ -9,27 +9,32 @@ import Foundation
 import FirebaseCore
 
 struct HabitModel {
+    var id: String
     var name: String
-    var status: Bool
+    var isCompleted: Bool
     var datetime: Timestamp
     
-    init(){
+    // Default initializer
+    init() {
+        id = ""
         name = ""
-        status = false
+        isCompleted = false
         datetime = Timestamp()
     }
     
-    init?(document: [String: Any]) {
+    // Initializer with id and document data
+    init?(id: String, document: [String: Any]) {
         guard
             let name = document["name"] as? String,
-            let status = document["status"] as? Bool,
+            let isCompleted = document["status"] as? Bool,
             let datetime = document["datetime"] as? Timestamp
         else {
             return nil
         }
         
+        self.id = id
         self.name = name
-        self.status = status
+        self.isCompleted = isCompleted
         self.datetime = datetime
     }
 }

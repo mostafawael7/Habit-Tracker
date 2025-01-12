@@ -13,13 +13,6 @@ extension HabitsVC {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID)
-        
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        tableView.refreshControl = refreshControl
-    }
-    
-    @objc func refresh(_ sender: AnyObject) {
-        viewModel.list()
     }
     
     func bindViewModel(){
@@ -31,17 +24,17 @@ extension HabitsVC {
             }else{
                 noDataImg.isHidden = true
                 tableView.isHidden = false
-                tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
             hideAnimatedActivityIndicatorView()
-            refreshControl.endRefreshing()
         }
         
         viewModel.anyError = { [weak self] error in
             guard let self = self else { return }
             hideAnimatedActivityIndicatorView()
-            print("error")
-#warning("Display the error")
+            displayAlert(title: "Error", message: error.localizedDescription, handler: nil)
         }
     }
 }
